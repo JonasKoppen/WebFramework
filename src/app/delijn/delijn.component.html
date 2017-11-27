@@ -1,0 +1,23 @@
+<!--Card-->
+<div class="card" *ngIf="vertrekken">
+    <div class="card-header">Vertrekken</div>
+    <div class="card-block">
+      <table clas="table table-hover">
+        <thread>
+          <tr>
+            <th>Lijn</th>
+            <th>Bestemming</th>
+            <th>Vertrek</th>
+          </tr>
+        </thread>
+        <tbody>
+          <tr *ngFor="let vertrek of vertrekken">
+              <td>{{vertrek.lijnNummer}}</td>
+              <td>{{vertrek.bestemming}}</td>
+              <td>{{vertrek.vertrekTijd | date:"HH:mm"}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!--/.Card-->

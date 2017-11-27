@@ -1,0 +1,13 @@
+<!--Card-->
+<div class="card" *ngIf="data">
+    <div class="card-header">{{data.location}}</div>
+    <div class="card-block">
+      <ul class="list-group" style="text-align:center">
+        <li class="list-group-item">Momenteel: <string><b>{{data.description}}</b></string></li>
+        <li class="list-group-item">Temperatuur: <string><b>{{data.temperature | number : '2.1-5'}}</b></string></li>
+        <li class="list-group-item"><i class ="fa fa-sun-o"></i>{{data.sunrise | date:'HH:mm'}}</li>
+        <li class="list-group-item"><i class ="fa fa-moon-o"></i>{{data.sunset | date:'HH:mm'}}</li>
+      </ul>
+    </div>
+  </div>
+  <!--/.Card-->
