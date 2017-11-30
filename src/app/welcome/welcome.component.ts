@@ -1,23 +1,53 @@
 import { Component } from '@angular/core';
+import { debug } from 'util';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { validateConfig } from '@angular/router/src/config';
 
 
 @Component({
 selector: 'app-welcome',
 templateUrl: './welcome.component.html',
 }) 
-export class WelcomeComponent{
+export class WelcomeComponent implements OnInit{
+
     imageUrl;
     title = 'WelcomeComponent';
-    images : Image[];
+    images : number[];
+    private _nr : number = 1;
+
     constructor(){
-        this.buildPictureList();
-        this.imageUrl = 'img%20(1).jpg';
-        this.imageUrl = 'img%20(' + (Math.round(Math.random()*152)) + ').jpg'
+    }
+
+    ngOnInit(){
+        this.SetImage();
+        setInterval(this.ChangeImage , 10000);
+    }
+
+    ChangeImage = () =>
+    {
+        this._nr = this.images[Math.round(Math.random()*(this.images.length - 1))];
+        this.SetImage()
+    }
+
+    get imageNr()
+    {
+        return this._nr
+    }
+
+    set imageNr(value : number)
+    {
+        this._nr = value,
+        this.SetImage();
+    }
+
+    SetImage(){
+        this.imageUrl = `img%20(${this._nr}).jpg`;
     }
 
     update(){
         this.imageUrl = 'img%20(' + (Math.round(Math.random()*152)) + ').jpg'
     }
+
 
     newPicture(event: KeyboardEvent) : void {
         if(event.keyCode == 69){
@@ -26,14 +56,19 @@ export class WelcomeComponent{
     }
 
     buildPictureList(){
-        this.images = new Array(152);
-        for(let i = 1; i < 152; i++){
-            this.images[i-1] = new Image(i-1, "img%20("+i+").jpg", "image " + i);
+        this.images = new Array(150);
+        for(let i = 1; i < 151; i++){
+            this.images[i] = i;
         }
+        
     }
 }
 
-export class Image{
-    constructor(public ID : number, public Link : string, public  Name : string){
+export class Imagest{
+    constructor(public ID : number, public Link : string, public name : string){
     }
+
+    get text() : string{
+        return this.name;
+    } 
 }

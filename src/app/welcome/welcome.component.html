@@ -1,13 +1,11 @@
 <div class="card">
-    <link rel="dread" type="image" href="dreaddrone.jpg">
         <!--Card image-->
         <img class="img-fluid" [src]="'https://mdbootstrap.com/img/Photos/Slides/'+ imageUrl" alt="Card image cap">
-        <select class="form-control" [(ngModel)]="counter">
-            <option *ngFor = "let i of images" value="i.ID">{{i.Name}}</option>
+        
+        <select class="form-control" [(ngModel)]="imageNr">
+            <option *ngFor = "let i of images" value="{{i}}">Image {{i}}</option>
         </select>
-        <!--Card image-->
-        <img class="img-fluid" src = "dreaddrone.jpg">
-        <!--Card content-->
+        
         <div class="card-body">
             <!--Title-->
             <h4 class="card-title">Card title</h4>
