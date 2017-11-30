@@ -10,6 +10,7 @@ import {HomeComponent} from './home/home.component';
 import {RouterModule} from '@angular/router';
 import {PageNotFoundComponent} from './pageNotFound/PageNotFound.component';
 import {NavbarComponent} from './navbar/navbar.component';
+import {FormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -21,10 +22,10 @@ import {NavbarComponent} from './navbar/navbar.component';
     GameComponent,
     HomeComponent,
     PageNotFoundComponent
-    
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     MDBBootstrapModule.forRoot(),
     RouterModule.forRoot([
       {path: "game", component : GameComponent},
