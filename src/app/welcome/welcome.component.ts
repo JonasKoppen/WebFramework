@@ -16,6 +16,10 @@ export class WelcomeComponent implements OnInit{
     private _nr : number = 1;
 
     constructor(){
+        this.images = new Array(150);
+        for(let i = 1; i < 151; i++){
+            this.images[i] = i;
+        }
     }
 
     ngOnInit(){
@@ -62,13 +66,4 @@ export class WelcomeComponent implements OnInit{
         }
         
     }
-}
-
-export class Imagest{
-    constructor(public ID : number, public Link : string, public name : string){
-    }
-
-    get text() : string{
-        return this.name;
-    } 
 }
