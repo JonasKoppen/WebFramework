@@ -10,19 +10,19 @@ templateUrl: './welcome.component.html',
 }) 
 export class WelcomeComponent implements OnInit{
 
-    imageUrl;
+    imageUrl : string;
     title = 'WelcomeComponent';
-    images : number[];
+    images : number[] = [1,2];
     private _nr : number = 1;
 
+    btnContent = "Press me!";
+    btnCounter = 0;
+
     constructor(){
-        this.images = new Array(150);
-        for(let i = 1; i < 151; i++){
-            this.images[i] = i;
-        }
     }
 
     ngOnInit(){
+        this.buildPictureList();
         this.SetImage();
         setInterval(this.ChangeImage , 10000);
     }
@@ -63,6 +63,20 @@ export class WelcomeComponent implements OnInit{
         this.images = new Array(150);
         for(let i = 1; i < 151; i++){
             this.images[i] = i;
+        }
+        
+    }
+
+    btnClick(){
+        this.btnCounter ++ ;
+        if(this.btnCounter>1){
+            this.btnContent = "You Pressed met: " + this.btnCounter + " times."
+        }
+        else{
+            this.btnContent = "Do not press me!"
+        }
+        if(this.btnCounter > 50){
+            this.btnContent = "Stop pressing ME!!!!"
         }
         
     }

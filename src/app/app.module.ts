@@ -11,6 +11,9 @@ import {RouterModule} from '@angular/router';
 import {PageNotFoundComponent} from './pageNotFound/PageNotFound.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {FormsModule} from '@angular/forms'
+import { CalcComponent } from './calculator/calculator.component';
+import { InputGameComponent } from './game/input-game/input-game.component';
+import { ButtonGameComponent } from './game/button-game/button-game.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import {FormsModule} from '@angular/forms'
     WelcomeComponent,
     GameComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CalcComponent,
+    InputGameComponent,
+    ButtonGameComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +37,7 @@ import {FormsModule} from '@angular/forms'
       {path: "game", component : GameComponent},
       {path: "game/:id", component : GameComponent},
       {path: "home", component : HomeComponent},
+      {path: "calc", component : CalcComponent},
       {path: "", redirectTo:"home", pathMatch: 'full'},
       {path: "404", component: PageNotFoundComponent},
       {path: '**', redirectTo: '/404'}

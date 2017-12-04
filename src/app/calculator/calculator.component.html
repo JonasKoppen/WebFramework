@@ -1,0 +1,44 @@
+<div class = "container">
+    <div class="row">
+        <div class = "col-sm-6 col-md-4">            
+        </div>
+        <div class="animated bounceIn col-sm-6 col-md-4">
+            <div class="row" id="result">
+                <input type="text" class="form-control text-right" name="result" readonly value="{{display}}" placeholder="0.0">
+            </div>
+            <div class="row">
+                <button id="allClear" type="button" class="btn btn-danger" (click)="clearScreen()">C</button>
+                <button id="clear" type="button" class="btn btn-warning" (click)="back()">DEL</button>
+                <button #bPerc type="button" class="btn btn-info" value="%" (click)="keyPress(bPerc)">%</button>
+                <button #bDiv type="button" class="btn btn-info" value="/" (click)="keyPress(bDiv)">÷</button>
+            </div>
+            <div class="row">
+                <button #b7 type="button" class="btn btn-info" value="7" (click)="keyPress(b7)">{{b7.value}}</button>
+                <button #b8 type="button" class="btn btn-info" value="8" (click)="keyPress(b8)">{{b8.value}}</button>
+                <button #b9 type="button" class="btn btn-info" value="9" (click)="keyPress(b9)">{{b9.value}}</button>
+                <button #bMul type="button" class="btn btn-info" value="*" (click)="keyPress(bMul)">x</button>
+            </div>
+            <div class="row">
+                <button #b4 type="button" class="btn btn-info" value="4" (click)="keyPress(b4)">{{b4.value}}</button>
+                <button #b5 type="button" class="btn btn-info" value="5" (click)="keyPress(b5)">{{b5.value}}</button>
+                <button #b6 type="button" class="btn btn-info" value="6" (click)="keyPress(b6)">{{b6.value}}</button>
+                <button #bMin type="button" class="btn btn-info" value="-" (click)="keyPress(bMin)">-</button>
+            </div>
+            <div class="row">
+                <button #b1 type="button" class="btn btn-info" value="1" (click)="keyPress(b1)">{{b1.value}}</button>
+                <button #b2 type="button" class="btn btn-info" value="2" (click)="keyPress(b2)">{{b2.value}}</button>
+                <button #b3 type="button" class="btn btn-info" value="3" (click)="keyPress(b3)">{{b3.value}}</button>
+                <button #bSum type="button" class="btn btn-info" value="+" (click)="keyPress(bSum)">+</button>
+            </div>
+            <div class="row">
+                <button #b0 type="button" class="btn btn-info" value="0" (click)="keyPress(b0)">0</button>
+                <button #bDec type="button" class="btn btn-info" onclick="myFunction(this.id)">.</button>
+                <button id="equals" type="button" class="btn btn-success" (click)="calculate()">=</button>
+                <button id="blank" type="button" class="btn btn-info">&nbsp;</button>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="error">
+        {{error}}
+    </div>
+</div>

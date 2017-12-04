@@ -1,3 +1,4 @@
+
 <div class="card">
         <!--Card image-->
         <img class="img-fluid" [src]="'https://mdbootstrap.com/img/Photos/Slides/'+ imageUrl" alt="Card image cap">
@@ -8,9 +9,9 @@
         
         <div class="card-body">
             <!--Title-->
-            <h4 class="card-title">Card title</h4>
+            <h4 class="card-title">Home Card Title</h4>
             <!--Text-->
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary waves-light" mdbRippleRadius>Button</a>
+            <p class="card-text">Hi, Welcome to the home screen of Jonas Koppen</p>
+            <a  class="btn btn-primary waves-light" mdbRippleRadius [textContent] = "btnContent" (click)="btnClick()"></a>
         </div>
 </div>
