@@ -11,10 +11,10 @@
           </tr>
         </thread>
         <tbody>
-          <tr *ngFor="let vertrek of vertrekken">
+          <tr *ngFor="let vertrek of vertrekken.lijnen">
               <td>{{vertrek.lijnNummer}}</td>
               <td>{{vertrek.bestemming}}</td>
-              <td>{{vertrek.vertrekTijd | date:"HH:mm"}}</td>
+              <td>{{vertrek.vertrekTijd}}</td>
           </tr>
         </tbody>
       </table>

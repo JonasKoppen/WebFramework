@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { WeatherService, IWeatherResult } from '../services/weather.service';
+import * as mathjs from 'mathjs'
 
 interface IWeather{
     location: string;
@@ -12,13 +15,38 @@ interface IWeather{
 selector: 'app-weather',
 templateUrl: './weather.component.html'
 }) 
-export class WeatherComponent{
+export class WeatherComponent implements OnInit{
     title = 'WeatherComponent';
-    data: IWeather= {
-        "location": "Antwerpen",
-        "description": "zonnig",
-        "temperature": 23.5,
-        "sunrise": new Date(2017,1,1,8,10),
-        "sunset": new Date(2017,1,1,21,15),
+    private _search: string = "Antwerpen";
+    data: IWeather
+
+    constructor(private _svc: WeatherService){}
+
+    ngOnInit(){
+      this._svc.getCurrentWeatherAt(this._search)
+      .subscribe(result => this.data = this.MapResult(result))
+    }
+
+    private MapResult(result : IWeatherResult) : IWeather{
+      return{
+        location: result.name,
+        icon: result.weather[0].icon,
+        description: result.weather[0].description,
+        temperature: +mathjs.unit(result.main.temp, "K").toNumber("degC").toFixed(1),
+        sunrise: new Date(result.sys.sunrise * 1000),
+        sunset: new Date(result.sys.sunset * 1000)
       }
+    }
+    
 }
+
+
+interface IWeather {
+  location: string;
+  description: string;
+  icon: string;
+  temperature: number;
+  sunrise: Date;
+  sunset: Date;
+}
+

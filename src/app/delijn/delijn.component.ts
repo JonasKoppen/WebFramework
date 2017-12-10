@@ -1,5 +1,26 @@
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { IVertrekResult, DeLijnService } from '../services/delijn.services';
 
+
+@Component({
+  selector: 'app-delijn',
+  templateUrl: './delijn.component.html'
+  }) 
+  export class DelijnComponent implements OnInit{
+      title = 'WeatherComponent';
+      vertrekken: IVertrekResult;
+
+      constructor(private _svc : DeLijnService){}
+
+      ngOnInit(){
+        this._svc.getVertrekken()
+          .subscribe(result => this.vertrekken = result);
+      }
+  }
+
+
+/* Oude versie
 interface ILijnen{
     bestemming: string;
     lijnNummer: number;
@@ -32,3 +53,4 @@ export class DelijnComponent{
       
     ];
 }
+*/

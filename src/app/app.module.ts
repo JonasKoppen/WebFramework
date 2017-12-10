@@ -14,6 +14,8 @@ import {FormsModule} from '@angular/forms'
 import { CalcComponent } from './calculator/calculator.component';
 import { InputGameComponent } from './game/input-game/input-game.component';
 import { ButtonGameComponent } from './game/button-game/button-game.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DeLijnService } from './services/delijn.services';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { ButtonGameComponent } from './game/button-game/button-game.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     MDBBootstrapModule.forRoot(),
     RouterModule.forRoot([
       {path: "game", component : GameComponent},
@@ -45,7 +48,9 @@ import { ButtonGameComponent } from './game/button-game/button-game.component';
     ], {useHash:true}),
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [],
+  providers: [
+    DeLijnService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
