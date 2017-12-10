@@ -16,6 +16,8 @@ import { InputGameComponent } from './game/input-game/input-game.component';
 import { ButtonGameComponent } from './game/button-game/button-game.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DeLijnService } from './services/delijn.services';
+import { WeatherService } from './services/weather.service';
+import { GameService } from './services/game.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { DeLijnService } from './services/delijn.services';
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
-    DeLijnService
+    DeLijnService,
+    WeatherService,
+    GameService
   ],
   bootstrap: [AppComponent]
 })

@@ -37,6 +37,15 @@ export class WeatherComponent implements OnInit{
         sunset: new Date(result.sys.sunset * 1000)
       }
     }
+
+    get Search(){
+      return this._search;
+    }
+
+    set Search(value : string){
+      this._search = value;
+      this._svc.getCurrentWeatherAt(this._search).subscribe(result => this.data = this.MapResult(result) );
+    }
     
 }
 
