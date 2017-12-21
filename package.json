@@ -30,6 +30,9 @@
     "@types/mathjs": "0.0.35",
     "lodash": "4.17.4",
     "@types/lodash": "4.14.85"
+    "express": "^4.16.2",
+    "mongodb": "2.2.33",
+    "body-parser":"1.18.2"
   },
   "devDependencies": {
     "@angular/cli": "1.4.5",
