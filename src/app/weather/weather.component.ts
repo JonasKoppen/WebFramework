@@ -26,6 +26,12 @@ export class WeatherComponent implements OnInit{
       this._svc.getCurrentWeatherAt(this._search)
       .subscribe(result => this.data = this.MapResult(result))
     }
+    /*
+    ngOnChange(){
+      this._svc.getCurrentWeatherAt(this._search)
+      .subscribe(result => this.data = this.MapResult(result))
+    }
+    */
 
     private MapResult(result : IWeatherResult) : IWeather{
       return{
