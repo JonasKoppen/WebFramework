@@ -5,19 +5,15 @@ import { AppComponent } from './app.component';
 import {WeatherComponent} from './weather/weather.component';
 import {DelijnComponent} from './delijn/delijn.component';
 import {WelcomeComponent} from './welcome/welcome.component';
-import {GameComponent} from './game/game.component';
 import {HomeComponent} from './home/home.component';
 import {RouterModule} from '@angular/router';
 import {PageNotFoundComponent} from './pageNotFound/PageNotFound.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {FormsModule} from '@angular/forms'
 import { CalcComponent } from './calculator/calculator.component';
-import { InputGameComponent } from './game/input-game/input-game.component';
-import { ButtonGameComponent } from './game/button-game/button-game.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DeLijnService } from './services/delijn.services';
 import { WeatherService } from './services/weather.service';
-import { GameService } from './services/game.service';
 
 @NgModule({
   declarations: [
@@ -26,12 +22,9 @@ import { GameService } from './services/game.service';
     WeatherComponent,
     DelijnComponent,
     WelcomeComponent,
-    GameComponent,
     HomeComponent,
     PageNotFoundComponent,
-    CalcComponent,
-    InputGameComponent,
-    ButtonGameComponent
+    CalcComponent
   ],
   imports: [
     BrowserModule,
@@ -52,8 +45,7 @@ import { GameService } from './services/game.service';
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
     DeLijnService,
-    WeatherService,
-    GameService
+    WeatherService
   ],
   bootstrap: [AppComponent]
 })
