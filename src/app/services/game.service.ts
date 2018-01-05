@@ -1,0 +1,32 @@
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs/Observable";
+import "rxjs/add/operator/map";
+import * as moment from "moment";
+
+
+@Injectable()
+export class GameService 
+{
+    constructor(private _client : HttpClient){}
+
+    GetScores() : Observable<IGameScores[]>
+    {
+        return this._client.get<IGameScores[]>("http://localhost:3000/api/game")
+          .map(scores => {scores.forEach(s => s.relDate = moment(s.date).fromNow()); return scores});
+    }
+
+    SaveScore(score : IGameScores) : Observable<IGameScores>
+    {
+        return this._client.post<IGameScores>("http://localhost:3000/api/game", score);
+    }
+}
+
+export interface IGameScores
+{
+    date : Date;
+    relDate : string;
+    attempts : number;
+    value : number;
+    guesses : Guess[];
+}

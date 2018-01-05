@@ -32,7 +32,8 @@
     "@types/lodash": "4.14.85",
     "express": "^4.16.2",
     "mongodb": "2.2.33",
-    "body-parser": "1.18.2"
+    "body-parser": "1.18.2",
+    "moment": "2.20.0"
   },
   "devDependencies": {
     "@angular/cli": "1.4.5",
