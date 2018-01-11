@@ -15,6 +15,7 @@ export class WeatherService{
 
     getCurrentWeatherAt(location:string) : Observable<IWeatherResult>
     {
+        console.log()
         return this._http.get<IWeatherResult>(`http://api.openweathermap.org/data/2.5/weather?q=${location}&lang=nl&APPID=c29dbdf3ccc2d57a361ceaeac49d9e53`);
     }
 }

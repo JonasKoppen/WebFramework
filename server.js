@@ -30,13 +30,16 @@ server.use(express.static(path.join(__dirname, 'dist')));
 server.use(bodyParser.json());
 server.use('/api', apiRouter);
 
+server.use(bodyParser.json());
+server.use('/api', apiRouter);
+
 apiRouter.route('/game')
 .get((req, res) => {
     //Select
     let query = req.query;
-    //haal de eerste 10 scores op, gesorteerd op attempts
-    db.collection("game").find(query).sort({attemps : 1}).limit(10).toArray((err, games) => {
-        if(err != null)
+    //haal de eerste 10 scores op , oplopend gesorteerd volgens 'attempts' (aantal pogingen)
+    db.collection("game").find(query).sort({attempts : 1}).limit(10).toArray((err, games) => {
+        if (err != null)
         {
             res.statusCode("500");
             return;
@@ -44,9 +47,11 @@ apiRouter.route('/game')
         res.json(games);
     })
 })
-.post((req, res) => {
+.post((req,res) => {
+    //Insert
     let request = req;
-    db.collection("game").inset(req.body, (err, result) => {
+    db.collection("game").insert(req.body, (err, result) => {
+        //Geef de toegevoegde score terug als response
         res.json(result.ops[0]);
     })
 })

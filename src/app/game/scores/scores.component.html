@@ -1,0 +1,16 @@
+<table class="table table-hover">
+    <thead *ngIf="scores && scores.length > 0">
+        <tr>
+            <th>Datum</th>
+            <th>Pogingen</th>
+            <th>Getal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let g of scores">
+            <th>{{g.relDate}}</th>
+            <td>{{g.attempts}}</td>
+            <td>{{g.value}}</td>
+        </tr>
+    </tbody>
+</table>

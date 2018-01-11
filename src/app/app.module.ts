@@ -14,6 +14,11 @@ import { CalcComponent } from './calculator/calculator.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DeLijnService } from './services/delijn.services';
 import { WeatherService } from './services/weather.service';
+import { GameOverviewComponent } from './game/game-overview/game-overview.component';
+import { GameButtonComponent } from './game/button-game/game-button.component';
+import { GameInputComponent } from './game/input-game/game-input.component';
+import { ScoresComponent } from './game/scores/scores.component';
+import { GameService } from './services/game.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,11 @@ import { WeatherService } from './services/weather.service';
     WelcomeComponent,
     HomeComponent,
     PageNotFoundComponent,
-    CalcComponent
+    CalcComponent,
+    GameOverviewComponent,
+    GameButtonComponent,
+    GameInputComponent,
+    ScoresComponent
   ],
   imports: [
     BrowserModule,
@@ -32,8 +41,8 @@ import { WeatherService } from './services/weather.service';
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
     RouterModule.forRoot([
-      {path: "game", component : GameComponent},
-      {path: "game/:id", component : GameComponent},
+      {path: "game", component : GameOverviewComponent},
+      {path: "game/:id", component : GameOverviewComponent},
       {path: "home", component : HomeComponent},
       {path: "calc", component : CalcComponent},
       {path: "", redirectTo:"home", pathMatch: 'full'},
@@ -45,7 +54,8 @@ import { WeatherService } from './services/weather.service';
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
     DeLijnService,
-    WeatherService
+    WeatherService,
+    GameService
   ],
   bootstrap: [AppComponent]
 })

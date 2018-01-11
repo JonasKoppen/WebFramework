@@ -1,0 +1,32 @@
+
+<div class="container">
+    <div class="alert alert-success" *ngIf="Saved">
+        <strong>Success!</strong> De score werd bewaard.
+    </div>
+<form>
+  <div class="md-form">
+      <i class="fa fa-hand-o-right prefix grey-text"></i>
+      <input #guess type="number" id="id_guess" class="form-control" mdbActive >
+      <label for="id_guess">Doe een gokje</label>
+  </div>
+</form>
+<div class="text-center">
+      <button class="btn btn-default waves-light" mdbRippleRadius (click)="AddGuess(guess.value)">Ga er voor !</button>
+</div>
+<table class="table table-hover">
+  <thead *ngIf="guesses?.length > 0">
+      <tr>
+          <th>#</th>
+          <th>Gok</th>
+          <th>Hint</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let g of guesses"  [class]="g.IsCorrect?'table-success':''">
+          <th scope="row">{{g.Attempt}}</th>
+          <td>{{g.Value}}</td>
+          <td>{{g.IsTooLow ? "Te laag": g.IsTooHigh ? "Te Hoog": "Correct !!"}}</td>
+      </tr>
+  </tbody>
+</table>
+</div>

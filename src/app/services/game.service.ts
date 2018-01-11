@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import * as moment from "moment";
+import { Guess } from "../game/input-game/game-input.component";
 
 
 @Injectable()
