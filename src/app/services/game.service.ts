@@ -13,13 +13,13 @@ export class GameService
 
     GetScores() : Observable<IGameScores[]>
     {
-        return this._client.get<IGameScores[]>("http://localhost:3000/api/game")
+        return this._client.get<IGameScores[]>("http://127.0.0.1:3000/api/game")
           .map(scores => {scores.forEach(s => s.relDate = moment(s.date).fromNow()); return scores});
     }
 
     SaveScore(score : IGameScores) : Observable<IGameScores>
     {
-        return this._client.post<IGameScores>("http://localhost:3000/api/game", score);
+        return this._client.post<IGameScores>("http://127.0.0.1:3000/api/game", score);
     }
 }
 
