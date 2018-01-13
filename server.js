@@ -3,6 +3,7 @@ const mongoClient = require("mongodb").MongoClient;
 const ObjectId = require('mongodb').ObjectId
 const bodyParser = require("body-parser");
 const path = require("path");
+var os = require("os")
 
 const hostname = "127.0.0.1";
 const port = 3000;
@@ -60,3 +61,5 @@ apiRouter.route('/game')
 server.listen(port,hostname, () => {
     console.log(`Server is running at http://${hostname}:${port}/`);
 });
+
+console.log(`Aantal cpu-cores: ${os.cpus().length}, totaal: ${os.totalmem()}}/`);
