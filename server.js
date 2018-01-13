@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const hostname = '127.0.0.1';
+const hostname = '192.168.1.47';
 const port = 3000;
 
 const server = express();
