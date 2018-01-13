@@ -19,7 +19,6 @@ import { GameButtonComponent } from './game/button-game/game-button.component';
 import { GameInputComponent } from './game/input-game/game-input.component';
 import { ScoresComponent } from './game/scores/scores.component';
 import { GameService } from './services/game.service';
-import { HelloComponent } from './hello/hello.component';
 
 //create new module: ng generate component hello
 @NgModule({
