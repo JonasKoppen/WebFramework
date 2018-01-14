@@ -34,7 +34,7 @@ mongoClient.connect(`mongodb://${hostname}:27017/myproject2`, (err, _db) =>{
     db = _db
     console.log("connected to the Mongo DataBase");
 
-    db.collection("people").find.toArray((err, people) =>{
+    db.collection("people").find().toArray((err, people) =>{
         if(err != null)
         {
             res.statusCode("500");
@@ -85,13 +85,19 @@ apiRouter.route('/people')
         //Select data that is given with the url route (vb ?data=kd&name=Jonas)
         let query = req.query;
 
-        db.collection("people").find.toArray((err, people) =>{
+        db.collection("people").find().toArray((err, people) =>{
             if(err != null)
             {
                 res.statusCode("500");
                 return;
             }
             res.json(people);
+        })
+    })
+    .post((req, res)=>{ //voeg een persoon toe dat via de body van de html POST wordt meegestuurd
+        let request = req;
+        db.collection("people").insert(req.body, (err, result) => {
+            res.json(result.ops[0]);
         })
     })
 
