@@ -102,18 +102,20 @@ apiRouter.route('/people')
             res.json(result.ops[0]);
         })
     })
-    .delete((req, res) =>{
-        let id = req.params.id;
-        let query = {'_id' : ObjectId(id)}
-        db.collection("people").delete(query).toArray((err, people) =>{
-            if(err != null)
+    .delete((req, res) => {
+        //Delete
+        let query = req.query;
+        db.collection("people").deleteMany(query, (err, result) => {
+            if (err != null)
             {
                 res.statusCode("500");
                 return;
             }
-            res.json(people)
+            //Geef "OK" terug als response indien de delete is gelukt
+            res.json("OK");
         })
     })
+
 
 
 server.listen(port,hostname, () => {
