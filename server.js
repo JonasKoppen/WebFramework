@@ -1,4 +1,3 @@
-import { ObjectID } from "../../../../AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/bson";
 
 const express = require("express");
 const mongoClient = require("mongodb").MongoClient;

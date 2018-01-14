@@ -34,8 +34,7 @@ import { GameService } from './services/game.service';
     GameOverviewComponent,
     GameButtonComponent,
     GameInputComponent,
-    ScoresComponent,
-    HelloComponent
+    ScoresComponent
   ],
   imports: [
     BrowserModule,
