@@ -12,6 +12,18 @@ const server = express();
 
 var db;
 
+let people = [
+    {
+        name: "Koppen",
+        firstName: "Jonas",
+        address: {
+            street: "as",
+            number: 45,
+            country: "Belgium"
+        }
+    }
+]
+
 //connect to mongoDB
 mongoClient.connect(`mongodb://${hostname}:27017/myproject2`, (err, _db) =>{
     if (err != null)
@@ -31,8 +43,6 @@ server.use(express.static(path.join(__dirname, 'dist')));
 server.use(bodyParser.json());
 server.use('/api', apiRouter);
 
-server.use(bodyParser.json());
-server.use('/api', apiRouter);
 
 apiRouter.route('/game')
 .get((req, res) => {
@@ -56,6 +66,21 @@ apiRouter.route('/game')
         res.json(result.ops[0]);
     })
 })
+
+apiRouter.route('/people')
+    .get((req, res) =>{
+        //Select data that is given with the url route (vb ?data=kd&name=Jonas)
+        let query = req.query;
+
+        db.collection("people").find.toArray((err, people) =>{
+            if(err != null)
+            {
+                res.statusCode("500");
+                return;
+            }
+            res.json(people);
+        })
+    })
 
 
 server.listen(port,hostname, () => {
