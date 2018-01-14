@@ -33,6 +33,19 @@ mongoClient.connect(`mongodb://${hostname}:27017/myproject2`, (err, _db) =>{
     }
     db = _db
     console.log("connected to the Mongo DataBase");
+
+    db.collection("people").find.toArray((err, people) =>{
+        if(err != null)
+        {
+            res.statusCode("500");
+            return;
+        }
+        if(people.length == 0){
+            db.collection("people").insert(people, (err, result) =>{
+                let res = result;
+            })
+        }
+    })
 })
 
 let apiRouter = express.Router();
