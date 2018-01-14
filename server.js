@@ -1,3 +1,5 @@
+import { ObjectID } from "../../../../AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/bson";
+
 const express = require("express");
 const mongoClient = require("mongodb").MongoClient;
 const ObjectId = require('mongodb').ObjectId
@@ -98,6 +100,18 @@ apiRouter.route('/people')
         let request = req;
         db.collection("people").insert(req.body, (err, result) => {
             res.json(result.ops[0]);
+        })
+    })
+    .delete((req, res) =>{
+        let id = req.params.id;
+        let query = {'_id' : ObjectId(id)}
+        db.collection("people").delete(query).toArray((err, people) =>{
+            if(err != null)
+            {
+                res.statusCode("500");
+                return;
+            }
+            res.json(people)
         })
     })
 
